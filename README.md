@@ -1,32 +1,16 @@
+# sy-auto-alertbot
 
-# sy-auto-alertbot (Vercel, Serverless)
+TradingView ➜ Vercel (Serverless) ➜ Telegram 推送机器人  
+支持 Binance 风格合约卡片图。
 
-TradingView -> Telegram (text + Binance-style image) push bot.
+## 部署步骤
 
-## Deploy on Vercel
-1) Create a GitHub repository and upload this folder's files.
-2) Go to https://vercel.com/new/import and import the repo.
-3) Add environment variables:
-   - TG_BOT_TOKEN = <your bot token>
-   - TG_CHAT_ID   = <target chat id>
-
-## Webhook (TradingView)
-Use your deployment URL:
-  https://<your-app>.vercel.app/api/push
-
-Alert message JSON example:
-```json
-{
-  "title": "推送止盈监控",
-  "ts": "{{time}}",
-  "symbol": "{{ticker}}",
-  "price": {{close}},
-  "tp_level": "TP1",
-  "action": "已清仓获利",
-  "status": "收益成功落袋",
-  "direction": "空",
-  "leverage": "75x",
-  "entry_price": 4296.66,
-  "pnl_percent": "+23.45%"
-}
-```
+1. 克隆仓库并上传到 GitHub。
+2. 在 Vercel 绑定仓库自动部署。
+3. 在 Vercel → Settings → Environment Variables 添加：
+   - `TG_BOT_TOKEN`
+   - `TG_CHAT_ID`
+4. TradingView 警报 Webhook URL 填写：
+   ```
+   https://<your-vercel-project>.vercel.app/api/push
+   ```

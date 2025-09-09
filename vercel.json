@@ -1,10 +1,9 @@
 {
   "version": 2,
-  "functions": {
-    "api/push.js": {
-      "runtime": "nodejs18.x",
-      "memory": 1536,
-      "maxDuration": 10
-    }
-  }
+  "builds": [
+    { "src": "api/push.js", "use": "@vercel/node" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "api/push.js" }
+  ]
 }
